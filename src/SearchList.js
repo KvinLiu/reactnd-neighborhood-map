@@ -25,14 +25,14 @@ class SearchList extends Component {
               >Go!</button>
           </div>
           <hr/>
-          <div class="input-group">
+          <div className="input-group">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Filter"
               />
-            <span class="input-group-addon">
-              <i class="fas fa-filter"></i>
+            <span className="input-group-addon">
+              <i className="fas fa-filter"></i>
             </span>
           </div>
           <hr/>
