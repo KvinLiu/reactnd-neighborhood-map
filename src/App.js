@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   render() {
+    const { places } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -25,7 +26,7 @@ class App extends Component {
         </header>
         <div className="container-fluid">
           <div className="row no-gutters">
-            <SearchList/>
+            <SearchList places={ places }/>
             <div className="col-md-9">
               <div id="map"/>
             </div>
