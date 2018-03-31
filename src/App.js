@@ -6,30 +6,29 @@ import './App.css';
 import MapView from './MapView';
 import SearchList from './SearchList';
 
-
 class App extends Component {
   state = {
     query: '',
     places: [],
     selectedPlace: ''
   }
-
+  // Get places data from foursquare when component initial mounted
   componentDidMount() {
     FourSquareAPI.search('NYC', 'Pizza').then(places => {
       this.setState({ places });
     });
   }
-
+  // Update search query which comes from  SearchList Component
   updateQuery = (query) => {
     this.setState({ query: query.trim() });
   }
-
+  // Get and update place info from SearchList Component
   updatePlace = (place) => {
     this.setState({selectedPlace: place});
   }
 
   render() {
-    const { query, places } = this.state;
+    const { query, places, selectedPlace } = this.state;
     let filteredPlaces;
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i');
@@ -53,8 +52,11 @@ class App extends Component {
                 places={filteredPlaces}
                 selectPlace={this.updatePlace}/>
             </div>
-            <div className="col-md-9">
-              <MapView />
+            <div className="col-md-9" tabIndex="-1">
+              <MapView
+                places={filteredPlaces}
+                selectPlace={selectedPlace}
+                />
             </div>
           </div>
         </div>

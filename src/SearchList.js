@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-
+// This component is for search list view, it render the props places data,
+// And handle cilck for place item.
 class SearchList extends Component {
-  state = {
-    query: '',
-    places: []
-  }
-
   render() {
     const { places, query, selectPlace } = this.props;
 
