@@ -58,7 +58,8 @@ class MapView extends Component {
   state = {
     selectId: ''
   }
-
+  // This is for tracing  SearchList state, when item clicked
+  // selectId changed
   componentWillReceiveProps(nextProps) {
     this.setState({
       selectId: nextProps.selectPlace.id

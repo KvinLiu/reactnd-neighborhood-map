@@ -15,6 +15,9 @@ reactnd-neighborhood-map/
     App.css
     App.js
     App.test.js
+    FourSquareAPI.js
+    MapView.js
+    SearchList.js
     index.css
     index.js
     logo.svg
@@ -25,28 +28,19 @@ For the project to build, **these files must exist with exact filenames**:
 * `public/index.html` is the page template;
 * `src/index.js` is the JavaScript entry point.
 
+## React Component
+In order to make this project work, several components were created
+1. `SearchList.js` this is for filter search resualts, and handle user click search result.
+2. `MapView.js` this is google map component, It's main functionality is for handle user click
+and show search results
+3. `FourSquareAPI.js` this is not a component, but it handle data from foursquare server.
 
 ## How to run this project
+1. Open the terminal
+2. `cd` Into the app directory
+3. type `npm install` or `yarn install` to install app dependences,
+   either commond is fine, depending on your preference.
+4. type `npm star` or `yarn star`, to run app with develop mode,
+   then you can type "http://localhost:3000" in your browser to use the app.
+5. enjoy!
 
-`cd` Into the app directory, run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
