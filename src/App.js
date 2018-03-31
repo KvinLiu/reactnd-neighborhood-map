@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import escapeRegExp from 'escape-string-regexp';
+import * as FourSquareAPI from './FourSquareAPI';
 import './App.css';
 
+import MapView from './MapView';
 import SearchList from './SearchList';
-import * as FourSquareAPI from './FourSquareAPI';
+
 
 class App extends Component {
   state = {
-    places: []
+    query: '',
+    places: [],
+    selectedPlace: ''
   }
 
   componentDidMount() {
@@ -15,20 +20,41 @@ class App extends Component {
     });
   }
 
+  updateQuery = (query) => {
+    this.setState({ query: query.trim() });
+  }
+
+  updatePlace = (place) => {
+    this.setState({selectedPlace: place});
+  }
+
   render() {
-    const { places } = this.state;
+    const { query, places } = this.state;
+    let filteredPlaces;
+    if (query) {
+      const match = new RegExp(escapeRegExp(query), 'i');
+      filteredPlaces = places
+        .filter(place => match.test(place.name));
+    } else {
+      filteredPlaces = places;
+    }
     return (
       <div className="App">
         <header className="App-header">
           <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-            <a className="navbar-brand" href="#">Next Stop</a>
+            <a className="navbar-brand" href="/">Next Stop</a>
           </nav>
         </header>
         <div className="container-fluid">
           <div className="row no-gutters">
-            <SearchList places={ places }/>
+            <div className="col-md-3">
+              <SearchList
+                query={this.updateQuery}
+                places={filteredPlaces}
+                selectPlace={this.updatePlace}/>
+            </div>
             <div className="col-md-9">
-              <div id="map"/>
+              <MapView />
             </div>
           </div>
         </div>
