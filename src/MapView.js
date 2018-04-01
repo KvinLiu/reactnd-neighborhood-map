@@ -15,6 +15,7 @@ const Map = compose(
   withGoogleMap
 )((props) => (
   <GoogleMap
+    ref={props.onMapLoad}
     defaultZoom={14}
     defaultCenter={{ lat: 40.7413549, lng: -73.9980244 }}
     >
@@ -52,6 +53,7 @@ const Map = compose(
         </Marker>
       ))}
   </GoogleMap>
+
 ));
 
 class MapView extends Component {
@@ -68,6 +70,13 @@ class MapView extends Component {
 
   handleMarkerClick = (selectId) => {
     this.setState({ selectId });
+  }
+
+  handleMapLoad = (map) => {
+    if(!map){
+      window.alert("Goole Map seems doesn't load corretly, please refresh page!");
+    }
+    console.log(map);
   }
 
   render() {
@@ -88,9 +97,9 @@ class MapView extends Component {
     return (
       <Map
         onMarkerClick={this.handleMarkerClick}
-        isOpen={this.state.isOpen}
         places={renderPlaces}
         placeDetail={clickPlace}
+        onMapLoad={this.handleMapLoad}
       />
     );
   }

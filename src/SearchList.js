@@ -13,6 +13,7 @@ class SearchList extends Component {
             type="text"
             className="form-control"
             placeholder="Filter"
+            aria-label="Filter Input"
             onChange={(event) => {
               query(event.target.value);
             }}
@@ -26,6 +27,7 @@ class SearchList extends Component {
           <ul className="list-group">
             {places.map(place => (
               <li
+                tabIndex="0"
                 key={place.id}
                 className="list-group-item list-group-item-action"
                 onClick={() => selectPlace(place)}>

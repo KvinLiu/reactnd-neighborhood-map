@@ -35,6 +35,13 @@ In order to make this project work, several components were created
 and show search results
 3. `FourSquareAPI.js` this is not a component, but it handle data from foursquare server.
 
+## Service Worker
+The `service worker` bundled with this app only woks in `production mode`, so in order to make
+code production you need to run commond:
+`npm run build` or `yarn run build`, the build is minified and the filenames include the hashes.
+The app production code will be in `build` folder. Then app is ready to be deployed.
+
+
 ## How to run this project
 1. Open the terminal
 2. `cd` Into the app directory
